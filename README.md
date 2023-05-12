@@ -23,7 +23,7 @@ $ docker run -v "$HOME/.config/gcloud":/var/run/gcloud -e CLOUDSDK_CONFIG=/var/r
 ```
 
 Set running variable environments on `.env` file:
-```
+```env
 GCLOUD_PROJECT=<project-id>
 CLOUDSDK_COMPUTE_ZONE=<your-compute-zone>
 CLOUDSDK_COMPUTE_REGION=<your-compute-region>
