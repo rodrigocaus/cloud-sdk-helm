@@ -1,0 +1,27 @@
+name: Build Google Cloud SDK + Helm container
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Docker Login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Docker Build and push
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: |
+            "${{ github.actor }}/cloud-sdk-helm:latest"
+            "${{ github.actor }}/cloud-sdk-helm:${{ github.sha }}"
+          file: Dockerfile
+          context: .
