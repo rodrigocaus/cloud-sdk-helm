@@ -4,6 +4,7 @@ Helm builder tool to deploy charts to GKE on CI/CD pipelines. It is heavily base
 [cloud-builders-community](https://github.com/GoogleCloudPlatform/cloud-builders-community/tree/master/helm), but
 already have GCS plugin and uses Helm v3 by default (without tiller deploy)
 
+You can access the container at [Docker Hub](https://hub.docker.com/r/rodrigocaus/cloud-sdk-helm).
 
 ## Building
 
@@ -18,7 +19,7 @@ $ docker build -t cloud-sdk-helm .
 You can run it locally by mouting your local gcloud config path:
 
 ```bash
-$ docker run -v "$HOME/.config/gcloud":/var/run/gcloud -e CLOUDSDK_CONFIG=/var/run/gcloud --env-file .env \
+$ docker run --rm -v "$HOME/.config/gcloud":/var/run/gcloud -e CLOUDSDK_CONFIG=/var/run/gcloud --env-file .env \
          cloud-sdk-helm list --all-namespaces
 ```
 
